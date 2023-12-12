@@ -7,7 +7,7 @@ const Celebrity = require("../models/Celebrity.model");
 // all your routes here
 
 // ****************************************************************************************
-// GET route to display the form to "create" a movie
+// GET route to display the form to create a movie
 // ****************************************************************************************
 
 router.get("/movies/create", (req, res) => {
@@ -21,7 +21,7 @@ router.get("/movies/create", (req, res) => {
 });
 
 // ****************************************************************************************
-// POST route to submit the form to create a celebrity
+// POST route to submit the form to create a movie
 // ****************************************************************************************
 
 router.post("/movies/create", (req, res) => {
@@ -41,7 +41,7 @@ router.post("/movies/create", (req, res) => {
 });
 
 // ****************************************************************************************
-// GET route to display all celebrities from the DB
+// GET route to display all movies from the DB
 // ****************************************************************************************
 
 router.get("/movies/movies", (req, res) => {
@@ -54,4 +54,62 @@ router.get("/movies/movies", (req, res) => {
     );
 });
 
+// ****************************************************************************************
+// GET route to display a movie detail from the DB
+// ****************************************************************************************
+
+router.get("/movies/:id", (req, res) => {
+  const { id } = req.params;
+
+  Movie.findById(id)
+    .populate("cast")
+    .then((movie) => {
+      console.log("movie", movie);
+      res.render("movies/movie-details", movie);
+    });
+});
+
 module.exports = router;
+
+// ****************************************************************************************
+// POST route to delete a movie
+// ****************************************************************************************
+
+router.post("/movies/:id/delete", (req, res) => {
+  const { id } = req.params;
+
+  Movie.findByIdAndRemove(id)
+    .then(() => res.redirect("/movies/movies"))
+    .catch((err) =>
+      console.log(`Error while deleting movie from the DB: ${err}`)
+    );
+});
+
+// ****************************************************************************************
+// GET route to update a movie from the DB
+// ****************************************************************************************
+
+router.get("/movies/:id/edit", (req, res) => {
+  const { id } = req.params;
+
+  Movie.findById(id).then((movie) => {
+    Celebrity.find()
+      .then((celebrities) => {
+        res.render("movies/edit-movie", { movie, celebrities });
+      })
+      .catch((err) => console.log(`Error while updating a movie: ${err}`));
+  });
+});
+
+// ****************************************************************************************
+// POST route to submit the form to update a movie
+// ****************************************************************************************
+
+router.post("/movies/:id", (req, res) => {
+  console.log("req.body", req.body);
+  const { title, genre, plot, cast } = req.body;
+
+  Movie.findByIdAndUpdate(req.params.id, req.body)
+    .then(() => res.redirect("movies/movie-details"))
+    .catch((err) => console.log(err));
+});

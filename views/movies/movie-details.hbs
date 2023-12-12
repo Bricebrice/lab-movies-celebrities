@@ -1,0 +1,26 @@
+<h2>movie-details.hbs</h2>
+
+<p>{{title}}</p>
+<p>{{genre}}</p>
+<p>{{plot}}</p>
+
+{{#each cast}}
+  <ul>
+    <li>Name:
+      {{name}}
+    </li>
+    <li>Occupation:
+      {{occupation}}
+    </li>
+    <li>Catch phrase:
+      {{catchPhrase}}
+    </li>
+  </ul>
+{{/each}}
+
+<a href="/movies/movies">See list of movies</a>
+
+<a href="/movies/{{_id}}/edit">Edit movie</a>
+<form action="/movies/{{_id}}/delete" method="POST">
+  <button type="submit">Delete movie</button>
+</form>
