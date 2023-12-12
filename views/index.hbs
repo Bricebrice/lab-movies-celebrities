@@ -1,7 +1,39 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<a href="/celebrities/create">Create a new celebrity</a>
-<a href="/celebrities/celebrities">See list of celebrities</a>
+<header>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg/1200px-Hollywood_Sign_%28Zuschnitt%29.jpg"
+    alt="Welcome Image"
+  />
+  {{> pageTitle title="Movies & celebrities"}}
+</header>
 
-<a href="/movies/create">Create a new movie</a>
-<a href="/movies/movies">See list of movies</a>
+<div class="d-flex">
+
+  <div class="card me-3" style="width: 18rem;">
+    <img
+      src="https://hips.hearstapps.com/hmg-prod/images/summer-movies-1587392939.jpg?crop=0.888888888888889xw:1xh;center,top&resize=1200:*"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">Movies</h5>
+      <p class="card-text">Some quick example text to build on the card title
+        and make up the bulk of the card's content.</p>
+      <a href="/movies/movies" class="btn btn-primary">See list of movies</a>
+    </div>
+  </div>
+
+  <div class="card me-3" style="width: 18rem;">
+    <img
+      src="https://ca-times.brightspotcdn.com/dims4/default/af4d9e4/2147483647/strip/true/crop/2400x1600+0+0/resize/2400x1600!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F94%2Fd0%2F715b47d5445991bcf2ba19ba28a8%2Fhollywood-hustles1105-online.jpg"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">Celebrities</h5>
+      <p class="card-text">Some quick example text to build on the card title
+        and make up the bulk of the card's content.</p>
+      <a href="/celebrities/celebrities" class="btn btn-primary">See list of
+        celebrities</a>
+    </div>
+  </div>
+</div>

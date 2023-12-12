@@ -1,8 +1,32 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00b7ff;
+h1 {
+  padding: 1.2em 0;
+  font-weight: bold;
+}
+
+header {
+  position: relative;
+  text-align: center;
+}
+
+header img {
+  width: 100%;
+  max-height: 30vh;
+  object-fit: cover;
+}
+
+.container {
+  background-color: whitesmoke;
+  padding: 0;
+  height: 100vh;
+}
+
+.d-flex {
+  justify-content: space-evenly;
+  margin: 1.2em 0.5em;
 }
