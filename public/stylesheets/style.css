@@ -30,3 +30,33 @@ header img {
   justify-content: space-evenly;
   margin: 1.2em 0.5em;
 }
+
+.list-group {
+  width: fit-content;
+  height: fit-content;
+  margin: 1.2em auto;
+  text-align: center;
+}
+
+.list-group-item {
+  padding: 1.2em 2em;
+}
+
+.list-group-item > a {
+  text-decoration: none;
+}
+
+.list-group-item > a:hover {
+  text-decoration: underline;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  max-width: 764px;
+  margin: 0 auto;
+}

@@ -1,19 +1,60 @@
-<h2>new-movie.hbs</h2>
+<header>
+  {{> pageTitle title="Create a new movie"}}
+</header>
 
 <form action="/movies/create" method="POST">
 
-  <label>Title: <input type="text" name="title" /></label>
-  <label>Genre: <input type="text" name="genre" /></label>
-  <label>Plot: <input type="text" name="plot" /></label>
+  <div class="mb-3">
+    <label for="title" class="form-label">Title
+    </label>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Armaggedon"
+      aria-label="default input example"
+      name="title"
+    />
+  </div>
 
-  <label for="cast">Select celebrities for the Cast:</label>
-  <select name="cast" id="cast" multiple>
-    {{#each celebrities}}
-      <option value="{{_id}}">{{name}}</option>
-    {{/each}}
-  </select>
+  <div class="mb-3">
+    <label for="title" class="form-label">Genre
+    </label>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Epic War"
+      aria-label="default input example"
+      name="genre"
+    />
+  </div>
 
-  <button type="submit">Submit</button>
+  <div class="mb-3">
+    <label for="title" class="form-label">Plot
+    </label>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Once upon a time..."
+      aria-label="default input example"
+      name="plot"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="cast" class="form-label">Cast
+    </label>
+    <select
+      class="form-select"
+      aria-label="Default select example"
+      name="cast"
+      multiple
+    >
+      {{#each celebrities}}
+        <option value="{{_id}}">{{name}}</option>
+      {{/each}}
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create</button>
 </form>
 
-<a href="/movies/movies">See list of movies</a>

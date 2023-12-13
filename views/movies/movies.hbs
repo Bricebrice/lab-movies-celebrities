@@ -2,35 +2,4 @@
   {{> pageTitle title="Movies"}}
 </header>
 
-{{!-- {{> listGroup}} --}}
-
-{{#if movies.length}}
-  <ul class="list-group">
-    {{#each movies}}
-      <li class="list-group-item">
-        <a href="/movies/{{this._id}}">{{this.title}}</a>
-      </li>
-    {{/each}}
-  </ul>
-{{else}}
-  <p>No movies available. Check out our list of celebrities:</p>
-  <ul class="list-group">
-    {{#each celebrities}}
-      <li class="list-group-item">
-        <a href="/celebrities/{{this._id}}">{{this.name}}</a>
-      </li>
-    {{/each}}
-  </ul>
-{{/if}}
-
-
-{{!-- 
-<ul>
-  {{#each movies}}
-    <li>
-      <a href="/movies/{{this._id}}">{{this.title}}</a>
-    </li>
-  {{/each}}
-</ul> --}}
-
-<a href="/movies/create">Create a new movie</a>
+{{> listGroup}}

@@ -1,10 +1,5 @@
-<h2>Celebrities</h2>
-<ul>
-  {{#each celebrities}}
-    <li>
-      {{this.name}}
-    </li>
-  {{/each}}
-</ul>
+<header>
+  {{> pageTitle title="Celebrities"}}
+</header>
 
-<a href="/celebrities/create">Create a new celebrity</a>
+{{> listGroup}}

@@ -1,10 +1,44 @@
-<h2>new-celebrity.hbs</h2>
-<form action="/celebrities/create" method="POST">
-  <label>Name: <input type="text" name="name" /></label>
-  <label>Occupation: <input type="text" name="occupation" /></label>
-  <label>Catch phrase: <input type="text" name="catchPhrase" /></label>
-  <br />
-  <button type="submit"> Create </button>
-</form>
+<header>
+  {{> pageTitle title="Create a new celebrity"}}
+</header>
 
-<a href="/celebrities/celebrities">See list of celebrities</a>
+<form action="/celebrities/create" method="POST">
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name
+    </label>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Tom Cruise"
+      aria-label="default input example"
+      name="name"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="occupation" class="form-label">Occupation
+    </label>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Actor"
+      aria-label="default input example"
+      name="occupation"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="catchPhrase" class="form-label">Catch Phrase
+    </label>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="The light that burns twice as bright burns half as long."
+      aria-label="default input example"
+      name="catchPhrase"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>
