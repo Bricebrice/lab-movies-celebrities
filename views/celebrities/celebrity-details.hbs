@@ -1,0 +1,12 @@
+<h2>celebrity-details.hbs</h2>
+
+<p>Name: {{name}}</p>
+<p>Occupation: {{occupation}}</p>
+<p>Catch phrase: {{catchPhrase}}</p>
+
+<a href="/celebrities/celebrities">See list of celebrities</a>
+
+<a href="/celebrities/{{_id}}/edit">Edit celebrity</a>
+<form action="/celebrities/{{_id}}/delete" method="POST">
+  <button type="submit">Delete celebrity</button>
+</form>

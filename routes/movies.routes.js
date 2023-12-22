@@ -32,7 +32,7 @@ router.post("/movies/create", (req, res) => {
         res.redirect("/movies/movies")
       );
     } else {
-      res.render("/movies/new-movie", {
+      res.render("movies/new-movie", {
         message: "It seems this movie is already registred!",
       });
       return;
@@ -68,8 +68,6 @@ router.get("/movies/:id", (req, res) => {
       res.render("movies/movie-details", movie);
     });
 });
-
-module.exports = router;
 
 // ****************************************************************************************
 // POST route to delete a movie
@@ -107,9 +105,11 @@ router.get("/movies/:id/edit", (req, res) => {
 
 router.post("/movies/:id", (req, res) => {
   console.log("req.body", req.body);
-  const { title, genre, plot, cast } = req.body;
+  // const { title, genre, plot, cast } = req.body;
 
   Movie.findByIdAndUpdate(req.params.id, req.body)
-    .then(() => res.redirect("movies/movie-details"))
+    .then((updatedMovie) => res.redirect(`/movies/${updatedMovie._id}`))
     .catch((err) => console.log(err));
 });
+
+module.exports = router;

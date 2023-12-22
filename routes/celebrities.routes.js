@@ -33,8 +33,6 @@ router.post("/celebrities/create", (req, res) => {
   });
 });
 
-module.exports = router;
-
 // ****************************************************************************************
 // GET route to display all celebrities from the DB
 // ****************************************************************************************
@@ -48,3 +46,61 @@ router.get("/celebrities/celebrities", (req, res) => {
       console.log(`Error while getting celebrities from the DB: ${err}`)
     );
 });
+
+// ****************************************************************************************
+// GET route to display a celebrity detail from the DB
+// ****************************************************************************************
+
+router.get("/celebrities/:id", (req, res) => {
+  const { id } = req.params;
+
+  Celebrity.findById(id).then((celebrity) => {
+    console.log("celebrity", celebrity);
+    res.render("celebrities/celebrity-details", celebrity);
+  });
+});
+
+// ****************************************************************************************
+// POST route to delete a celebrity
+// ****************************************************************************************
+
+router.post("/celebrities/:id/delete", (req, res) => {
+  const { id } = req.params;
+
+  Celebrity.findByIdAndRemove(id)
+    .then(() => res.redirect("/celebrities/celebrities"))
+    .catch((err) =>
+      console.log(`Error while deleting celebrity from the DB: ${err}`)
+    );
+});
+
+// ****************************************************************************************
+// GET route to update a celebrity from the DB
+// ****************************************************************************************
+
+router.get("/celebrities/:id/edit", (req, res) => {
+  const { id } = req.params;
+
+  Celebrity.findById(id)
+    .then((celebrity) => {
+      res.render("celebrities/edit-celebrity", { celebrity });
+    })
+    .catch((err) => console.log(`Error while updating a movie: ${err}`));
+});
+
+// ****************************************************************************************
+// POST route to submit the form to update a celebrity
+// ****************************************************************************************
+
+router.post("/celebrities/:id", (req, res) => {
+  console.log("req.body", req.body);
+  // const { name, occupation, catchPhrase } = req.body;
+
+  Celebrity.findByIdAndUpdate(req.params.id, req.body)
+    .then((updatedCelebrity) =>
+      res.redirect(`/celebrities/${updatedCelebrity._id}`)
+    )
+    .catch((err) => console.log(err));
+});
+
+module.exports = router;
